@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+
+a {
+  font-size: 1.5rem;
+  color: #00ffcc;
+  text-decoration: none;
+  border-bottom: 2px dashed #00ffcc;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
