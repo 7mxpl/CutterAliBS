@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Latest YouTube Video</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
+    a {
+      font-size: 1.5rem;
+      color: #00ffcc;
+      text-decoration: none;
+      border-bottom: 2px dashed #00ffcc;
+      transition: all 0.3s ease;
+    }
+    a:hover {
+      color: #fff;
+      border-bottom: 2px solid #fff;
+    }
+  </style>
 </head>
 <body>
+  <a id="videoLink" href="#" target="_blank">Neuestes YouTube-Video wird geladen...</a>
+
   <script>
     const channelId = "UCQvIv_ykxkHH9BQDQXem_Qg";
     const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -12,13 +37,14 @@
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        const latestVideoId = data.items[0].link.split('=')[1];
-        const latestVideoUrl = `https://www.youtube.com/watch?v=${latestVideoId}`;
-        document.body.innerText = latestVideoUrl;
+        const latestVideoUrl = data.items[0].link;
+        const linkElement = document.getElementById("videoLink");
+        linkElement.href = latestVideoUrl;
+        linkElement.textContent = "🎬 Zum neuesten YouTube-Video!";
       })
       .catch(error => {
         console.error("Error:", error);
-        document.body.innerText = "Fehler beim Laden des Videos.";
+        document.getElementById("videoLink").textContent = "Fehler beim Laden 😢";
       });
   </script>
 </body>
