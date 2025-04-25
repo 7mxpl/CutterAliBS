@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Latest YouTube Video</title>
+</head>
+<body>
+  <script>
+    const channelId = "UCQvIv_ykxkHH9BQDQXem_Qg";
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        const latestVideoId = data.items[0].link.split('=')[1];
+        const latestVideoUrl = `https://www.youtube.com/watch?v=${latestVideoId}`;
+        document.body.innerText = latestVideoUrl;
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        document.body.innerText = "Fehler beim Laden des Videos.";
+      });
+  </script>
+</body>
+</html>
