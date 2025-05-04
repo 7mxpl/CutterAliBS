@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Latest YouTube Video</title>
+  <title>Neuestes YouTube-Video</title>
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <a id="videoLink" href="#" target="_blank">Neuestes YouTube-Video wird geladen...</a>
+  <div id="videoInfo" class="hidden">
+    <h1 id="videoTitle">Lade Video...</h1>
+    <img id="thumbnail" alt="Thumbnail" width="480">
+    <p>Du wirst in <span id="countdown">5</span> Sekunden weitergeleitet...</p>
+    <a id="videoLink" href="#" target="_blank">Video öffnen</a>
+  </div>
+  <p id="error" class="hidden">Fehler beim Laden des Videos 😢</p>
 
   <script src="scripts/main.js"></script>
 </body>
